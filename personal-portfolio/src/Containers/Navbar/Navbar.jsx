@@ -1,12 +1,16 @@
 import { lastIndexOf } from 'lodash';
-import {navRoutes} from '../../assets/'
-const Navbar = ()=>{
+import {Routes} from '../../assets/'
+
+export const Navbar = ()=>{
 
 return (
 <ul>
-    {Routes.navRoutes.map((title, href)=> (       
+    {Routes.map((route)=> {
+        const {title, href}=route;
+    return(<li><a>{route.title}</a></li>);
+})}
     
-    <li><a>{navRoutes.title}</a></li> ))}
+
 </ul>
 )
 };

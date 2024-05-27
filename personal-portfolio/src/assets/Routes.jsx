@@ -1,4 +1,4 @@
-const navRoutes=[
+const Routes=[
     {
     title: 'Home',
     href:"#"
@@ -21,5 +21,5 @@ const navRoutes=[
 }];
 export default {
    
-  navRoutes
+    Routes
   };
