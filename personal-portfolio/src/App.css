@@ -1,0 +1,114 @@
+:root, :root.light {
+    --color-bg: #ffffff;
+    --color-fg: #000000;
+}
+
+:root.dark {
+    --color-bg: #343434;
+    --color-fg: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+}
+
+#theme {
+    font-size: 15px; /* Reduced to half of original 30px */
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+.container {
+    width: 50%; /* Reduced to half of original width */
+    height: 100%;
+   
+}
+
+.toggle {
+    background-color: #607d8b;
+    color: #607d8b;
+    visibility: hidden;
+}
+
+.toggle_label {
+    position: relative;
+    display: inline-block;
+    width: 100px; /* Reduced to half of original 200px */
+    height: 30px; /* Reduced to half of original 60px */
+    background-color: rgb(0, 0, 0);
+    border-radius: 15px; /* Adjusted for new size */
+}
+
+.slider {
+    bottom: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    border: 2.5px solid white; /* Reduced to half of original 5px */
+    content: "";
+    height: 18px; /* Reduced to half of original 36px */
+    width: 18px; /* Reduced to half of original 36px */
+    right: 5px; /* Reduced to half of original 10px */
+    left: 3.5px; /* Reduced to half of original 7px */
+    top: 3.5px; /* Reduced to half of original 7px */
+    position: absolute;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.slider i {
+    position: absolute;
+    display: inline-block;
+    font-size: 9px; /* Reduced to half of original 18px */
+    color: #fff;
+    transition: opacity 0.4s;
+}
+
+.moon {
+    top: 14.5px; /* Reduced to half of original 29px */
+    left: 12px; /* Reduced to half of original 24px */
+}
+
+.sun {
+    top: 14.5px; /* Reduced to half of original 29px */
+    right: 10.5px; /* Reduced to half of original 21px */
+    opacity: 0;
+}
+
+input:checked + .slider {
+    background-color: #00ff48;
+}
+
+input:checked + .slider:before {
+    transform: translateX(70px); /* Reduced to half of original 140px */
+}
+
+.slider.round {
+    border-radius: 17px; /* Reduced to half of original 34px */
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.toggle:checked + .slider .moon {
+    opacity: 0;
+}
+
+.toggle:checked + .slider .sun {
+    opacity: 1;
+    color: rgb(0, 0, 0);
+}
