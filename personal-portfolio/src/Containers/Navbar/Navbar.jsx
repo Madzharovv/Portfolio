@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes } from '../../assets';
+import { Routes } from '../../constants';
 
 const Navbar = () => {
     console.log('Routes:', Routes); // Debugging line
@@ -9,16 +9,14 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className='LogoContainer'>
-                <img src="" alt="" />
-            </div>
-        <ul className='BarContainer'>
-            {routesArray.map((route, index) => (
-                <li key={index}>
-                    <a href={route.href}>{route.title}</a>
-                </li>
-            ))}
-        </ul>
+
+            <ul className='BarContainer'>
+                {routesArray.map((route, index) => (
+                    <li key={index}>
+                        <a href={route.href}>{route.title}</a>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
