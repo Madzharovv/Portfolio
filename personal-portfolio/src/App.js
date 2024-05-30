@@ -1,66 +1,72 @@
 import './App.css';
-import React,  { useState, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './Containers/index';
 import { images } from '../src/constants/index';
 
 const App = () => {
-    //how to create a variable in react?
-    const [themeMode, setThemeMode] = useState('Dark');
-    const toggleThemeMode = () => {
-      setThemeMode(prevMode => (prevMode === 'Dark' ? 'Light' : 'Dark'));
-      const lightThemeLogo="images.LightThemeLogo"
-      const darkThemeLogo="images.DarkThemeLogo"
-      const theme = document.getElementById('theme');
-      const changeTheme = document.getElementById('mode');
-      changeTheme.onchange = (e) => {
-        if (changeTheme.checked === true) {
-          console.log("Checked")
-          theme.innerHTML="Light Theme"
-          document.documentElement.classList.remove("dark")
-          document.documentElement.classList.add("light")
-          window.localStorage.setItem('mode', 'light');
-        } else {
-          console.log("Not Checked")
-          theme.innerHTML="Dark Theme"
-          document.documentElement.classList.remove("light")
-          document.documentElement.classList.add("dark")
-          window.localStorage.setItem('mode', 'dark');
-        }
-      }
-      const mode = window.localStorage.getItem('mode');
-      if (mode == 'dark') {
-        changeTheme.checked = true;
-        document.documentElement.classList.remove("light")
-        document.documentElement.classList.add("dark")
-      }
-      
-      if (mode == 'light') {
-        changeTheme.checked = false;
-        document.documentElement.classList.remove("dark")
-        document.documentElement.classList.add("light")
-      }
+  const [themeMode, setThemeMode] = useState('Dark');
+  const [imageSrc, setImageSrc] = useState(images.DarkThemeLogo);
+
+  useEffect(() => {
+    const mode = window.localStorage.getItem('mode');
+    if (mode === 'light') {
+      setThemeMode('Light');
+      setImageSrc(images.LightThemeLogo);
+      document.documentElement.classList.add('light');
+    } else {
+      setThemeMode('Dark');
+      setImageSrc(images.DarkThemeLogo);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  useEffect(() => {
+    const changeTheme = document.getElementById('mode');
+    const theme = document.getElementById('theme');
+    if (themeMode === 'Light') {
+      changeTheme.checked = true;
+   
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      setImageSrc(images.LightThemeLogo);
+    } else {
+      changeTheme.checked = false;
+ 
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      setImageSrc(images.DarkThemeLogo);
+    }
+    window.localStorage.setItem('mode', themeMode.toLowerCase());
+  }, [themeMode]);
+
+  const toggleThemeMode = () => {
+    setThemeMode((prevMode) => (prevMode === 'Dark' ? 'Light' : 'Dark'));
   };
-    return(
 
+  return (
     <div className="App">
-      <div class="container">
-  <label class="toggle_label">
-    <input type="checkbox" id="mode" class="toggle"/>
-    <span class="slider round">
-      <i class="fa-solid fa-moon fa-lg  moon"></i>
-      <i class="fa-solid fa-sun  fa-lg sun"></i>
-    </span>
-  </label>
-  <p id="theme"></p>
-</div>
-    <div className='LogoContainer'>
-          <img src=""></img>
-          </div>
- <Navbar />
-  </div>
-  )
-    
+      <div className="container">
+        <label className="toggle_label">
+          <input 
+            type="checkbox" 
+            id="mode" 
+            className="toggle" 
+            onChange={toggleThemeMode} 
+            defaultChecked={themeMode === 'Light'}
+          />
+          <span className="slider round">
+            <i className="fa-solid fa-moon fa-lg moon"></i>
+            <i className="fa-solid fa-sun fa-lg sun"></i>
+          </span>
+        </label>
+        <p id="theme"></p>
+      </div>
+      <div className="LogoContainer">
+        <img className="logo" id="logoID" src={imageSrc} alt="Logo" width="75px"/>
+      </div>
+      <Navbar />
+    </div>
+  );
 };
-
 
 export default App;
