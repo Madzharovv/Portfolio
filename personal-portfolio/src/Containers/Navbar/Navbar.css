@@ -1,0 +1,6 @@
+.BarContainer{
+    display: flex;
+    flex-direction: rowq;
+    justify-content: space-between;
+width:100%;
+}

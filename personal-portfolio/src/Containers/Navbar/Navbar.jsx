@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes } from '../../constants';
-
+import './Navbar.css';
 const Navbar = () => {
     console.log('Routes:', Routes); // Debugging line
 
