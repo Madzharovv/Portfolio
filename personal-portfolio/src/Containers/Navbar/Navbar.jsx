@@ -12,8 +12,8 @@ const Navbar = () => {
 
             <ul className='BarContainer'>
                 {routesArray.map((route, index) => (
-                    <li key={index}>
-                        <a href={route.href}>{route.title}</a>
+                    <li className='list' key={index}>
+                        <a className='navLink' href={route.href}>{route.title}</a>
                     </li>
                 ))}
             </ul>

@@ -1,6 +1,10 @@
+
 .BarContainer{
-    display: flex;
-    flex-direction: rowq;
+    list-style: none;
     justify-content: space-between;
-width:100%;
+    width: 80%;
+    display: flex;
 }
+
+.list{}
+.navLink{}

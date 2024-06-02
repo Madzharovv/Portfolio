@@ -46,6 +46,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="container">
+      <div className='themeModeWrapper'>
         <label className="toggle_label">
           <input 
             type="checkbox" 
@@ -60,11 +61,12 @@ const App = () => {
           </span>
         </label>
         <p id="theme"></p>
-      </div>
+        </div>
       <div className="LogoContainer">
         <img className="logo" id="logoID" src={imageSrc} alt="Logo" width="75px"/>
       </div>
       <Navbar />
+    </div>
     </div>
   );
 };
